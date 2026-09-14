@@ -2,6 +2,7 @@ package com.clinica.clinica;
 import java.util.ArrayList;
 
 public class paciente {
+		private int ID;
 		private String nomePaciente;
 		private String CPF;
 		private int idade;
