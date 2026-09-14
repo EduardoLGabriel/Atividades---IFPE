@@ -11,12 +11,13 @@ public class paciente {
 		private String observacoes;
 		
 		
-		public paciente(String nomePaciente, String CPF, int idade, char genero, String observacoes) {
+		public paciente(int ID, String nomePaciente, String CPF, int idade, char genero, String observacoes) {
 			this.nomePaciente=nomePaciente;
 			this.CPF=CPF;
 			this.idade = idade;
 			this.genero = genero;
 			this.observacoes = observacoes;
+			this.ID = ID;
 		}
 		
 		
