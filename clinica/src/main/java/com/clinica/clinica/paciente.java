@@ -7,7 +7,6 @@ public class paciente {
 		private String CPF;
 		private int idade;
 		private String genero;
-		private ArrayList<String> Alergias;
 		private String observacoes;
 		
 		
