@@ -31,8 +31,7 @@ public class main {
 					+ "\n8 - Exibir histórico"
 					+ "\n9 - Exibir Salas"
 					+ "\n10 - Alterar Status da Sala"
-					+ "\n11 - Ordenar Paciente po nome"
-					+ "\n12 - Ordenar pacientes por idade\n");
+					+ "\n11 - Ordenar Paciente\n");
 			int opcao = input.nextInt();
 			input.nextLine();
 			switch(opcao) {
