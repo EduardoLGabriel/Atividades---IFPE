@@ -256,19 +256,14 @@ public class main {
 					switch(opcaoOrdenar) {
 						case 1:
 							System.out.println("Pacientes ordenados por nome:");
-	
-							pacientes.sort((p1, p2) -> p1.getNomePaciente().compareToIgnoreCase(p2.getNomePaciente())
-							);
-	
+							pacientes.sort((p1, p2) -> p1.getNomePaciente().compareToIgnoreCase(p2.getNomePaciente()));
 							for (paciente paciente : pacientes) {
 								System.out.println(paciente.getID()+" - "+paciente.getNomePaciente());
 							}
 						break;
 						case 2:
 							pacientes.sort((p1, p2) ->
-						    Integer.compare(p1.getIdade(), p2.getIdade())
-						    
-						);
+						    Integer.compare(p1.getIdade(), p2.getIdade()));
 							for (paciente paciente : pacientes) {
 								System.out.println(paciente.getID()+" - "+paciente.getNomePaciente()+" - "+ paciente.getIdade()+" anos");
 							}
