@@ -10,6 +10,8 @@ public class main {
 		boolean[][] salas = new boolean[3][3];
 		int[] semana = new int[7];
 		ArrayList<paciente> pacientes = new ArrayList<>();
+		Queue<paciente> fila = new LinkedList<>();
+		Stack<paciente> historico = new Stack<>();
 		
 		int idade = 0;
 		int id=0;
@@ -30,10 +32,12 @@ public class main {
 					+ "\n5 - Consultar próximos pacientes"
 					+ "\n6 - Atender paciente"
 					+ "\n7 - Exibir fila"
-					+ "\n8 - Exibir histórico"
-					+ "\n9 - Exibir Salas"
-					+ "\n10 - Alterar Status da Sala"
-					+ "\n11 - Ordenar Paciente\n");
+					+ "\n8 - Consultar último atendimento"
+					+ "\n9 - Remover último atendimento"
+					+ "\n10 - Exibir histórico"
+					+ "\n11 - Exibir Salas"
+					+ "\n12 - Alterar Status da Sala"
+					+ "\n13 - Ordenar Paciente\n");
 			int opcao = input.nextInt();
 			input.nextLine();
 			switch(opcao) {
@@ -127,12 +131,12 @@ public class main {
 					break;
 				default:
 					break;
-				case 4: 
+				case 4:
 					System.out.print("Digite o ID do paciente para adicionar na fila: ");
-   					int idFila = input.nextInt();
-    				input.nextLine();
-    				for (paciente pessoa : pacientes) {
-       	 				if (pessoa.getID() == idFila) {
+					int idFila = input.nextInt();
+					input.nextLine();
+					for (paciente pessoa : pacientes) {
+						if (pessoa.getID() == idFila) {
 							fila.offer(pessoa);
 							System.out.println("Paciente adicionado à fila!");
 						}
@@ -159,6 +163,31 @@ public class main {
 					for (paciente pessoa : fila) {
 						System.out.println(pessoa.getNomePaciente());
 					}
+					break;
+					case 8:
+					paciente ultimo = historico.peek();
+					if (ultimo != null) {
+						System.out.println("Último atendimento: " + ultimo.getNomePaciente());
+					} else {
+						System.out.println("O histórico está vazio!");
+					}
+					break;
+					case 9:
+					if (!historico.empty()) {
+						paciente removido = historico.pop();
+						System.out.println("Atendimento removido: " + removido.getNomePaciente());
+					} else {
+						System.out.println("O histórico está vazio!");
+					}
+					break;
+					case 10:
+					System.out.println("Histórico de atendimentos:");
+					for (paciente pessoa : historico) {
+						System.out.println(pessoa.getNomePaciente());
+					}
+					break;
+					default:
+					System.out.println("Opção inválida!");
 					break;
 			}
 		}
