@@ -17,10 +17,36 @@ public class main {
 		int id=0;
 		String nome = null;
 		String cpf = null;
-		
 		String genero = null;
 		String observacao;
 		boolean sair=false;
+
+		pacientes.add(new paciente(
+			    1,
+			    "Carlos Silva",
+			    "111.111.111-11",
+			    35,
+			    "Masculino",
+			    "Hipertensão"
+			));
+
+			pacientes.add(new paciente(
+			    2,
+			    "Ana Santos",
+			    "222.222.222-22",
+			    18,
+			    "Feminino",
+			    "Nenhuma observação"
+			));
+
+			pacientes.add(new paciente(
+			    3,
+			    "Bruno Oliveira",
+			    "333.333.333-33",
+			    25,
+			    "Masculino",
+			    "Alergia a medicamento"
+			));
 		
 		
 		while(sair==false) {
@@ -186,9 +212,72 @@ public class main {
 						System.out.println(pessoa.getNomePaciente());
 					}
 					break;
-					default:
+					case 11: 
+					System.out.print(" Quadro de salas\n");
+					int numSala = 1;
+					for (int parte=0; parte<salas.length;parte++) {
+						
+						for (int sala=0;sala<3;sala++) {
+							int status = salas[parte][sala] ? 1 : 0;
+			                System.out.print("Sala "+numSala+" - [" + (status==1?"Indisponível":"Disponível") + "] \n");
+			                numSala++;
+						}
+					}
+				break;
+				case 12:
+					
+					System.out.print("Qual sala deseja utilizar? \n-> ");
+					int numSalaUsar = input.nextInt();
+					input.nextLine();
+					if(numSalaUsar<=3&&numSalaUsar>0) {
+						System.out.print("Sala "+numSalaUsar+" - [" + (salas[0][numSalaUsar-1]  ?"Indisponível":"Disponível") + "] \n");
+						numSalaUsar-=1;
+						salas[0][numSalaUsar]=(salas[0][numSalaUsar]?false:true);
+					}
+					else if(numSalaUsar>6&&numSalaUsar<=9) {
+						System.out.print("Sala "+numSalaUsar+" - [" + (salas[2][numSalaUsar-7]  ?"Indisponível":"Disponível") + "] \n");
+						numSalaUsar-=7;
+						salas[2][numSalaUsar]=(salas[2][numSalaUsar]?false:true);
+					}
+					else if(numSalaUsar<0||numSalaUsar>9) {
+						System.out.print("Número de sala invalido\n");
+					} else {
+						System.out.print("Sala "+numSalaUsar+" - [" + (salas[1][numSalaUsar-4]  ?"Indisponível":"Disponível") + "] \n");
+						numSalaUsar-=4;
+						salas[1][numSalaUsar]=(salas[1][numSalaUsar]?false:true);
+					}
+					System.out.print("[ Status da sala alterado para "+ (salas[1][numSalaUsar]  ?"Indisponível":"Disponível") + " ] \n");
+				break;
+				case 13:
+					System.out.print("Qual filtro deseja utilizar? \n1 - Nome\n2 - Idade\n-> ");
+					int opcaoOrdenar = input.nextInt();
+					input.nextLine();
+					
+					switch(opcaoOrdenar) {
+						case 1:
+							System.out.println("Pacientes ordenados por nome:");
+	
+							pacientes.sort((p1, p2) -> p1.getNomePaciente().compareToIgnoreCase(p2.getNomePaciente())
+							);
+	
+							for (paciente paciente : pacientes) {
+								System.out.println(paciente.getID()+" - "+paciente.getNomePaciente());
+							}
+						break;
+						case 2:
+							pacientes.sort((p1, p2) ->
+						    Integer.compare(p1.getIdade(), p2.getIdade())
+						    
+						);
+							for (paciente paciente : pacientes) {
+								System.out.println(paciente.getID()+" - "+paciente.getNomePaciente()+" - "+ paciente.getIdade()+" anos");
+							}
+						break;
+					}
+				break;
+				default:
 					System.out.println("Opção inválida!");
-					break;
+				break;
 			}
 		}
 	}
