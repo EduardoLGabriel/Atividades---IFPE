@@ -1,7 +1,9 @@
 package com.clinica.clinica;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Stack;
 public class main {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
@@ -124,6 +126,39 @@ public class main {
 					}
 					break;
 				default:
+					break;
+				case 4: 
+					System.out.print("Digite o ID do paciente para adicionar na fila: ");
+   					int idFila = input.nextInt();
+    				input.nextLine();
+    				for (paciente pessoa : pacientes) {
+       	 				if (pessoa.getID() == idFila) {
+							fila.offer(pessoa);
+							System.out.println("Paciente adicionado à fila!");
+						}
+					}
+					break;
+					case 5:
+					paciente proximo = fila.peek();
+					if (proximo != null) {
+						System.out.println("Próximo paciente: " + proximo.getNomePaciente());
+					} else {
+						System.out.println("A fila está vazia!");
+					}
+					break;
+					case 6:
+					paciente atendido = fila.poll();
+					if (atendido != null) {
+						historico.push(atendido);
+						System.out.println("Paciente atendido: " + atendido.getNomePaciente());
+					} else {
+						System.out.println("Não há pacientes na fila!");
+					}
+					break;
+					case 7:
+					for (paciente pessoa : fila) {
+						System.out.println(pessoa.getNomePaciente());
+					}
 					break;
 			}
 		}
