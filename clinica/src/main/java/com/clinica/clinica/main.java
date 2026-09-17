@@ -271,9 +271,6 @@ public class main {
 						break;
 					}
 				break;
-				default:
-					System.out.println("Opção inválida!");
-				break;
 				case 14:
 					for (int i = 0; i < 7; i++) {
 						System.out.print("Digite a quantidade de atendimentos do dia " + (i + 1) + ": ");
@@ -291,8 +288,20 @@ public class main {
 						}
 					}
 					System.out.println("Maior quantidade de atendimentos: " + maior);
+					int menor = semana[0];
+					for (int i = 1; i < 7; i++) {
+						if (semana[i] < menor) {
+							menor = semana[i];
+						}
+					}
+					System.out.println("Menor quantidade de atendimentos: " + menor);
+					double media = total / 7.0;
+					System.out.println("Média de atendimentos por dia: " + media);
 					break;
 			}
+			default:
+				System.out.println("Opção inválida!");
+			break;
 		}
 	}
 }
