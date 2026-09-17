@@ -63,7 +63,8 @@ public class main {
 					+ "\n10 - Exibir histórico"
 					+ "\n11 - Exibir Salas"
 					+ "\n12 - Alterar Status da Sala"
-					+ "\n13 - Ordenar Paciente\n");
+					+ "\n13 - Ordenar Paciente"
+					+ "\n14 - Exibir estatísticas\n");
 			int opcao = input.nextInt();
 			input.nextLine();
 			switch(opcao) {
@@ -273,6 +274,24 @@ public class main {
 				default:
 					System.out.println("Opção inválida!");
 				break;
+				case 14:
+					for (int i = 0; i < 7; i++) {
+						System.out.print("Digite a quantidade de atendimentos do dia " + (i + 1) + ": ");
+						semana[i] = input.nextInt();
+					}
+					int total = 0;
+					for (int i = 0; i < 7 ; i++){
+						total = total + semana[i];
+					}
+					System.out.println("Total de pacientes atendidos: " + total);
+					int maior = semana[0];
+					for (int i = 1; i < 7; i++) {
+						if (semana[i] > maior) {
+							maior = semana[i];
+						}
+					}
+					System.out.println("Maior quantidade de atendimentos: " + maior);
+					break;
 			}
 		}
 	}
