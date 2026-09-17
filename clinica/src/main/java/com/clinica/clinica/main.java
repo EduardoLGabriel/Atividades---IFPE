@@ -153,10 +153,8 @@ public class main {
 					break;
 				case 3:
 					for(paciente pessoa:pacientes) {
-						System.out.print("\n_________________ \nNome: "+pessoa.getNomePaciente()+"\nID do paciente: "+pessoa.getID()+"\n____________________");
+						System.out.print("\n_________________ \nNome: "+pessoa.getNomePaciente()+"\nID do paciente: "+pessoa.getID()+"\nStatus: "+(pessoa.isMenorIdade()?"Recém-Nascido":"Crescido")+"\n____________________");
 					}
-					break;
-				default:
 					break;
 				case 4:
 					System.out.print("Digite o ID do paciente para adicionar na fila: ");
@@ -252,7 +250,7 @@ public class main {
 					}
 				break;
 				case 13:
-					System.out.print("Qual filtro deseja utilizar? \n1 - Nome\n2 - Idade\n-> ");
+					System.out.print("Como deseja ordenar? \n1 - Nome\n2 - Idade\n-> ");
 					int opcaoOrdenar = input.nextInt();
 					input.nextLine();
 					
@@ -300,10 +298,12 @@ public class main {
 					double media = total / 7.0;
 					System.out.println("Média de atendimentos por dia: " + media);
 					break;
+					
+				default:
+					System.out.println("Opção inválida!");
+				break;
 			}
-			default:
-				System.out.println("Opção inválida!");
-			break;
+			
 		}
 	}
 }
