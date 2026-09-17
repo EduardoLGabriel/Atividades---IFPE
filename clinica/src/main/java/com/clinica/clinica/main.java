@@ -131,7 +131,7 @@ public class main {
 						
 						System.out.print("Alguma observação do paciente? \n-> ");
 						observacao = input.nextLine();
-						if (menorIdade) {pacientes.add(new paciente(id, nome, cpf, idade, genero, observacao, true));} 
+						if (menorIdade) {pacientes.add(new paciente(id, nome, cpf, idade, genero, observacao, menorIdade));} 
 						else {
 						pacientes.add(new paciente(id, nome, cpf, idade, genero, observacao));
 						}
@@ -234,20 +234,22 @@ public class main {
 						System.out.print("Sala "+numSalaUsar+" - [" + (salas[0][numSalaUsar-1]  ?"Indisponível":"Disponível") + "] \n");
 						numSalaUsar-=1;
 						salas[0][numSalaUsar]=(salas[0][numSalaUsar]?false:true);
+						System.out.print("[ Status da sala alterado para "+ (salas[0][numSalaUsar]  ?"Indisponível":"Disponível") + " ] \n");
 					}
 					else if(numSalaUsar>6&&numSalaUsar<=9) {
 						System.out.print("Sala "+numSalaUsar+" - [" + (salas[2][numSalaUsar-7]  ?"Indisponível":"Disponível") + "] \n");
 						numSalaUsar-=7;
 						salas[2][numSalaUsar]=(salas[2][numSalaUsar]?false:true);
+						System.out.print("[ Status da sala alterado para "+ (salas[2][numSalaUsar]  ?"Indisponível":"Disponível") + " ] \n");
 					}
-					else if(numSalaUsar<0||numSalaUsar>9) {
+					else if(numSalaUsar<1||numSalaUsar>9) {
 						System.out.print("Número de sala invalido\n");
 					} else {
 						System.out.print("Sala "+numSalaUsar+" - [" + (salas[1][numSalaUsar-4]  ?"Indisponível":"Disponível") + "] \n");
 						numSalaUsar-=4;
 						salas[1][numSalaUsar]=(salas[1][numSalaUsar]?false:true);
+						System.out.print("[ Status da sala alterado para "+ (salas[1][numSalaUsar]  ?"Indisponível":"Disponível") + " ] \n");
 					}
-					System.out.print("[ Status da sala alterado para "+ (salas[1][numSalaUsar]  ?"Indisponível":"Disponível") + " ] \n");
 				break;
 				case 13:
 					System.out.print("Qual filtro deseja utilizar? \n1 - Nome\n2 - Idade\n-> ");
